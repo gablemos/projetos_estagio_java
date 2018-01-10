@@ -1,4 +1,4 @@
-package desafio;
+package br.com.focus.desafio;
 
 import java.util.ArrayList;
 

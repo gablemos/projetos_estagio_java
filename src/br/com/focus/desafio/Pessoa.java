@@ -1,8 +1,7 @@
-package desafio;
+package br.com.focus.desafio;
 
 public class Pessoa {
-    private String nome;
-    private String telefone;
+    private String nome, telefone;
 
 
     public Pessoa(String nome, String telefone){
