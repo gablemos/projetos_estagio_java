@@ -10,7 +10,7 @@ public class FindGuitarTester {
         Inventory inventory = new Inventory();
         initializeInventory(inventory);
 
-        Guitar whatErinLikes = new Guitar("", 0, Builder.FENDER, "Stratocastor", Type.ELETRIC, Wood.ALDER, Wood.ALDER);
+        GuitarSpec whatErinLikes = new GuitarSpec("Stratocastor", Builder.FENDER, Type.ELETRIC, Wood.ALDER, Wood.ALDER);
 
         List matchingGuitars = inventory.search(whatErinLikes);
 
@@ -19,10 +19,10 @@ public class FindGuitarTester {
             for(Iterator i = matchingGuitars.iterator(); i.hasNext();){
                 Guitar guitar = (Guitar)i.next();
                 System.out.println("We have a " +
-                        guitar.getBuilder() + " " + guitar.getModel() + " " +
-                        guitar.getType() + " guitar:\n" +
-                        guitar.getBackWood() + " back and sides,\n" +
-                        guitar.getTopWood() + " top.\nYou can have it for only $" + guitar.getPrice() + "!\n ----");
+                        guitar.getSpec().getBuilder() + " " + guitar.getSpec().getModel() + " " +
+                        guitar.getSpec().getType() + " guitar:\n" +
+                        guitar.getSpec().getBackWood() + " back and sides,\n" +
+                        guitar.getSpec().getTopWood() + " top.\nYou can have it for only $" + guitar.getPrice() + "!\n ----");
             }
             }else{
             System.out.println("Sorry, Erin we have nothin for you.");
