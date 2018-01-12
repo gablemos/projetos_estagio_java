@@ -1,26 +1,22 @@
-package br.com.hf.ooad.ch2;
+package br.com.hf.ooad.DogDoor;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class DogDoor {
+
     private boolean open;
-    private Bark allowedBark;
+    private List allowedBarks;
 
     public DogDoor(){
+        this.allowedBarks = new LinkedList();
         this.open = false;
     }
 
     public boolean isOpen(){
         return open;
-    }
-
-    public void setAllowedBark(Bark allowedBark) {
-        this.allowedBark = allowedBark;
-    }
-
-    public Bark getAllowedBark() {
-        return allowedBark;
     }
 
     public void open(){
@@ -39,5 +35,15 @@ public class DogDoor {
         System.out.println("The dog door closes.");
         this.open = false;
     }
+
+    public void addAllowedBark(Bark bark) {
+        allowedBarks.add(bark);
+    }
+
+    public List getAllowedBarks() {
+        return allowedBarks;
+    }
+
+
 
 }

@@ -1,4 +1,4 @@
-package br.com.hf.ooad.ch1;
+package br.com.hf.ooad.InstrumentStore;
 
 public enum Builder {
 

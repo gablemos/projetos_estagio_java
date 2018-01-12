@@ -1,4 +1,4 @@
-package br.com.focus.desafio;
+package br.com.focus.Desafio;
 
 public class Pessoa {
     private String nome, telefone;

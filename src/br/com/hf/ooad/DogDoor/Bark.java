@@ -1,4 +1,4 @@
-package br.com.hf.ooad.ch2;
+package br.com.hf.ooad.DogDoor;
 
 public class Bark {
 

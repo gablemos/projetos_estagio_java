@@ -1,4 +1,4 @@
-package br.com.focus.desafio;
+package br.com.focus.Desafio;
 
 import java.util.Scanner;
 
