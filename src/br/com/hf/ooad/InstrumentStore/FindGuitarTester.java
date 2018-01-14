@@ -19,7 +19,7 @@ public class FindGuitarTester {
         List matchingGuitars = inventory.search(whatErinLikes);
         List matchingMandolins = inventory.search(whatJuLikes);
 
-        if(!matchingGuitars.isEmpty()){
+        /*if(!matchingGuitars.isEmpty()){
             System.out.println("Erin, you might like there guitars:\n\n");
             for(Iterator i = matchingGuitars.iterator(); i.hasNext();){
                 Guitar guitar = (Guitar)i.next();
@@ -33,7 +33,7 @@ public class FindGuitarTester {
             }
             }else{
             System.out.println("Sorry, Erin we have nothin for you.");
-        }
+        }*/
 
 
     }
