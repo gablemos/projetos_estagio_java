@@ -1,5 +1,6 @@
 package br.com.focus.Desafio;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class ListaTelefonica {
 
     public List search(String character){
         System.out.println("Procurando pelos contatos solicitados ...");
-        List resultSearch = new LinkedList();
+        final List resultSearch = new LinkedList();
 
         for(Iterator i = phoneBook.iterator(); i.hasNext(); ){
             Pessoa pessoa = (Pessoa)i.next();
@@ -26,7 +27,7 @@ public class ListaTelefonica {
                 resultSearch.add(pessoa);
             }
         }
-        return  resultSearch;
+        return  Collections.unmodifiableList(resultSearch);
     }
 
 }
