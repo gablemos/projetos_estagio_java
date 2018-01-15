@@ -1,4 +1,4 @@
-package br.com.hf.ooad.DogDoor;
+package br.com.hf.ooad.dogdoor;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package br.com.hf.ooad.InstrumentStore;
+package br.com.hf.ooad.instrumentstore;
 
-public abstract class Instrument {
+public class Instrument {
     private String serialNumber;
     private double price;
     private InstrumentSpec spec;
@@ -13,10 +13,6 @@ public abstract class Instrument {
 
     public String getSerialNumber() {
         return serialNumber;
-    }
-
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
     }
 
     public double getPrice() {
