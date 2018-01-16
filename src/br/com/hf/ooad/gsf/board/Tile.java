@@ -13,11 +13,11 @@ public class Tile {
         units = new LinkedList();
     }
 
-    public void addUnit(Unit unit) {
+    protected void addUnit(Unit unit) {
         units.add(unit);
     }
 
-    public void removeUnit(Unit unit) {
+    protected void removeUnit(Unit unit) {
         units.remove(unit);
     }
 

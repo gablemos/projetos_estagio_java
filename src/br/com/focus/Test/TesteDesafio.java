@@ -11,7 +11,7 @@ import java.util.List;
 public class TesteDesafio {
 
     public static void initializePhoneBook(ListaTelefonica listaTelefonica){
-        listaTelefonica.addContato(new Pessoa("Rafaela", "111111"));
+        listaTelefonica.addContato(new Pessoa("Rafaela", "1111112"));
         listaTelefonica.addContato(new Pessoa("Gabriel", "222222"));
         listaTelefonica.addContato(new Pessoa("Lucas", "333333"));
         listaTelefonica.addContato(new Pessoa("Maisa", "444444"));
