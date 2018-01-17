@@ -17,14 +17,18 @@ public class ListaTelefonica {
         phoneBook.add(pessoa);
     }
 
-    public List search(String character){
+    public List search(String character) throws IllegalAccessException{
         System.out.println("Procurando pelos contatos solicitados ...");
         final List resultSearch = new LinkedList();
 
-        for(Iterator i = phoneBook.iterator(); i.hasNext(); ){
-            Pessoa pessoa = (Pessoa)i.next();
-            if(pessoa.getNome().startsWith(character)){
-                resultSearch.add(pessoa);
+        if(character == null){
+            throw new IllegalAccessException("Um texto para busca precisa ser informado!!");
+        }else {
+            for (Iterator i = phoneBook.iterator(); i.hasNext(); ) {
+                Pessoa pessoa = (Pessoa) i.next();
+                if (pessoa.getNome().startsWith(character.trim())) {
+                    resultSearch.add(pessoa);
+                }
             }
         }
         return  Collections.unmodifiableList(resultSearch);

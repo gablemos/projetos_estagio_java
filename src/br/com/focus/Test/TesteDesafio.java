@@ -22,6 +22,10 @@ public class TesteDesafio {
 
     }
 
+    /*
+    @Description Testa a busca de contatos informando apenas 1 letra
+    exibe os contatos encontrados
+     */
     @Test
     public void buscaLetra(){
         ListaTelefonica listaTelefonica = new ListaTelefonica();
@@ -29,7 +33,13 @@ public class TesteDesafio {
 
         System.out.println("Informe a(s) inicial(is) do nome da pessoa que deseja encontrar o contato: ");
 
-        List consulta = listaTelefonica.search("G");
+        List consulta = null;
+
+        try {
+            consulta = listaTelefonica.search("G");
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
         if (!consulta.isEmpty()){
             System.out.println("\nEncontrei estes contatos ...");
@@ -40,10 +50,14 @@ public class TesteDesafio {
                 System.out.println("Nome: " + pessoa.getNome() + " - Telefone: " + pessoa.getTelefone());
             }
         }else{
-            System.out.println("Desculpe, não consegui encontar nenhum contato!");
+            System.out.println("Desculpe, não consegui encontar nenhum contato.");
         }
     }
 
+    /*
+   @Description Testa a busca de contatos informando nome parcial/completo
+   exibe os contatos encontrados
+    */
     @Test
     public void buscaNome(){
         ListaTelefonica listaTelefonica = new ListaTelefonica();
@@ -51,7 +65,12 @@ public class TesteDesafio {
 
         System.out.println("Informe a(s) inicial(is) do nome da pessoa que deseja encontrar o contato: ");
 
-        List consulta = listaTelefonica.search("Rafael");
+        List consulta = null;
+        try {
+            consulta = listaTelefonica.search("Rafael");
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
         if (!consulta.isEmpty()){
             System.out.println("\nEncontrei estes contatos ...");
@@ -62,10 +81,14 @@ public class TesteDesafio {
                 System.out.println("Nome: " + pessoa.getNome() + " - Telefone: " + pessoa.getTelefone());
             }
         }else{
-            System.out.println("Desculpe, não consegui encontar nenhum contato!");
+            System.out.println("Desculpe, não consegui encontar nenhum contato");
         }
     }
 
+    /*
+   @Description Testa a busca de contatos com informações que não ha na lista
+   deve retornar que não encontrou
+    */
     @Test
     public void buscaInesistente(){
         ListaTelefonica listaTelefonica = new ListaTelefonica();
@@ -73,7 +96,12 @@ public class TesteDesafio {
 
         System.out.println("Informe a(s) inicial(is) do nome da pessoa que deseja encontrar o contato: ");
 
-        List consulta = listaTelefonica.search("Z");
+        List consulta = null;
+        try {
+            consulta = listaTelefonica.search("Z");
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
         if (!consulta.isEmpty()){
             System.out.println("\nEncontrei estes contatos ...");
@@ -84,11 +112,14 @@ public class TesteDesafio {
                 System.out.println("Nome: " + pessoa.getNome() + " - Telefone: " + pessoa.getTelefone());
             }
         }else{
-            System.out.println("Desculpe, não consegui encontar nenhum contato!");
+            System.out.println("Desculpe, não consegui encontar nenhum contato!!");
         }
     }
 
-    @Ignore
+    /*
+    Testa passar o parametro de busca como nulo
+     */
+    @Test
     public void buscaNull(){
         ListaTelefonica listaTelefonica = new ListaTelefonica();
         initializePhoneBook(listaTelefonica);
@@ -96,18 +127,24 @@ public class TesteDesafio {
         System.out.println("Informe a(s) inicial(is) do nome da pessoa que deseja encontrar o contato: ");
         String x = null;
 
-        List consulta = listaTelefonica.search(x);
+        List consulta = null;
+        try {
+            consulta = listaTelefonica.search(x);
+            if (!consulta.isEmpty()){
+                System.out.println("\nEncontrei estes contatos ....");
 
-        if (!consulta.isEmpty()){
-            System.out.println("\nEncontrei estes contatos ...");
+                for (Iterator i = consulta.iterator(); i.hasNext(); ){
+                    Pessoa pessoa = (Pessoa)i.next();
 
-            for (Iterator i = consulta.iterator(); i.hasNext(); ){
-                Pessoa pessoa = (Pessoa)i.next();
-
-                System.out.println("Nome: " + pessoa.getNome() + " - Telefone: " + pessoa.getTelefone());
+                    System.out.println("Nome: " + pessoa.getNome() + " - Telefone: " + pessoa.getTelefone());
+                }
+            }else{
+                System.out.println("Desculpe, não consegui encontar nenhum contato!");
             }
-        }else{
-            System.out.println("Desculpe, não consegui encontar nenhum contato!");
+        } catch (IllegalAccessException e) {
+            System.out.println(e);
         }
+
+
     }
 }

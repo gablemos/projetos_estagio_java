@@ -1,16 +1,24 @@
 package br.com.hf.ooad.gsf.unit;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class Unit {
 
-    private String type;
     private int id;
+    private String type;
     private String nome;
-    private Weapon weapon;
+    private List weapons;
     private Map properties;
 
-    public Unit(){
+    public Unit(int id){
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getType() {
@@ -21,10 +29,6 @@ public class Unit {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -33,19 +37,33 @@ public class Unit {
         this.nome = nome;
     }
 
-    public Weapon getWeapon() {
-        return weapon;
+    public List getWeapons() {
+        return weapons;
     }
 
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
+    public void addWeapons(Weapon weapon) {
+        if (weapons == null){
+            weapons = new LinkedList();
+        }
+        weapons.add(weapon);
     }
 
-    public Map getProperties() {
-        return properties;
+    public Object getProperty(String property){
+            if (properties == null) {
+                throw new RuntimeException("No properties for this Unit.");
+            }
+            Object value = properties.get(property);
+            if(value == null){
+                throw new RuntimeException("Request for non-existent property.");
+            }else{
+                return value;
+            }
     }
 
-    public void setProperties(Map properties) {
-        this.properties = properties;
+    public void setProperty(String property, Object value) {
+        if (properties == null){
+            properties = new HashMap();
+        }
+        properties.put(property, value);
     }
 }

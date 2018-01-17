@@ -14,7 +14,12 @@ public class Main {
 
         System.out.println("Informe a(s) inicial(is) do nome da pessoa que deseja encontrar o contato: ");
 
-        List consulta = listaTelefonica.search(scanner.next());
+        List consulta = null;
+        try {
+            consulta = listaTelefonica.search(scanner.next());
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
         if (!consulta.isEmpty()){
             System.out.println("\nEncontrei estes contatos ...");
@@ -28,6 +33,7 @@ public class Main {
             System.out.println("Desculpe, não consegui encontar nenhum contato!");
         }
     }
+
     public static void initializePhoneBook(ListaTelefonica listaTelefonica){
         listaTelefonica.addContato(new Pessoa("Rafaela", "111111"));
         listaTelefonica.addContato(new Pessoa("Gabriel", "222222"));
