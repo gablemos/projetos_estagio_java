@@ -1,4 +1,4 @@
-package br.com.hf.ooad.gsf;
+package br.com.gabriel.hf.ooad.gsf;
 
 import br.com.gabriel.hf.ooad.gsf.unit.Unit;
 import junit.framework.Test;
