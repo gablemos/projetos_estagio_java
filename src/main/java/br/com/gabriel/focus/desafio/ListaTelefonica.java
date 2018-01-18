@@ -1,4 +1,4 @@
-package br.com.focus.Desafio;
+package br.com.gabriel.focus.desafio;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -17,12 +17,12 @@ public class ListaTelefonica {
         phoneBook.add(pessoa);
     }
 
-    public List search(String character) throws NullPointerException{
+    public List search(String character){
         System.out.println("Procurando pelos contatos solicitados ...");
         final List resultSearch = new LinkedList();
 
         if(character == null){
-            throw new NullPointerException("Necessita-se de um texto para busca!");
+            throw new NullPointerException("Necessita-se de um texto para busca, não pode ser nulo!");
         }else {
             for (Iterator i = phoneBook.iterator(); i.hasNext(); ) {
                 Pessoa pessoa = (Pessoa) i.next();

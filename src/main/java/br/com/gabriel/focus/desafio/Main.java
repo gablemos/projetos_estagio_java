@@ -1,4 +1,4 @@
-package br.com.focus.Desafio;
+package br.com.gabriel.focus.desafio;
 
 import java.util.Iterator;
 import java.util.List;

@@ -1,4 +1,4 @@
-package br.com.hf.ooad.dogdoor;
+package br.com.gabriel.hf.ooad.dogdoor;
 
 public class DogDoorSimulator {
     public static void main(String[] args) {

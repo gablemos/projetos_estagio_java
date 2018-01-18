@@ -1,12 +1,11 @@
 package br.com.hf.ooad.gsf;
 
-import br.com.hf.ooad.gsf.unit.Unit;
-
+import br.com.gabriel.hf.ooad.gsf.unit.Unit;
+import junit.framework.Test;
 import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
-public class UnitTest
-        extends TestCase
-{
+public class UnitTest extends TestCase{
 
     public void testUnit() throws IllegalAccessException {
         System.out.println("Testing the Unit class...");
@@ -77,7 +76,7 @@ public class UnitTest
         System.out.println("Test complete.");
     }
 
-    public void hitPoint() throws IllegalAccessException {
+    public void testHitPoint() throws IllegalAccessException {
         Unit unit = new Unit(4);
         unit.setProperty("hitPoint", 25);
         assertEquals(25, unit.getProperty("hitPoint"));

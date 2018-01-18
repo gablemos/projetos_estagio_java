@@ -1,6 +1,6 @@
-package br.com.hf.ooad.gsf.board;
+package br.com.gabriel.hf.ooad.gsf.board;
 
-import br.com.hf.ooad.gsf.unit.Unit;
+import br.com.gabriel.hf.ooad.gsf.unit.Unit;
 
 import java.util.ArrayList;
 import java.util.List;

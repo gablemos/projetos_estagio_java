@@ -1,140 +1,92 @@
 package br.com.gabriel.focus.desafio;
 
-import br.com.focus.Desafio.ListaTelefonica;
-import br.com.focus.Desafio.Pessoa;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
-
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
-public class TesteDesafio {
+
+public class TesteDesafio{
+    static Pessoa pessoa1 = new Pessoa("Rafaela", "1111112");
+    static Pessoa pessoa2 = new Pessoa("Gabriel", "222222");
+    static Pessoa pessoa3 = new Pessoa("Lucas", "333333");
+    static Pessoa pessoa4 = new Pessoa("Maisa", "444444");
+    static Pessoa pessoa5 = new Pessoa("Guilherme", "555555");
+    static Pessoa pessoa6 = new Pessoa("Romulo", "666666");
+    static Pessoa pessoa7 = new Pessoa("Remo", "777777");
+    static Pessoa pessoa8 = new Pessoa("Rafael", "888888");
 
     public static void initializePhoneBook(ListaTelefonica listaTelefonica){
-        listaTelefonica.addContato(new Pessoa("Rafaela", "1111112"));
-        listaTelefonica.addContato(new Pessoa("Gabriel", "222222"));
-        listaTelefonica.addContato(new Pessoa("Lucas", "333333"));
-        listaTelefonica.addContato(new Pessoa("Maisa", "444444"));
-        listaTelefonica.addContato(new Pessoa("Guilherme", "555555"));
-        listaTelefonica.addContato(new Pessoa("Romulo", "666666"));
-        listaTelefonica.addContato(new Pessoa("Remo", "777777"));
-        listaTelefonica.addContato(new Pessoa("Rafael", "888888"));
-
+        listaTelefonica.addContato(pessoa1);
+        listaTelefonica.addContato(pessoa2);
+        listaTelefonica.addContato(pessoa3);
+        listaTelefonica.addContato(pessoa4);
+        listaTelefonica.addContato(pessoa5);
+        listaTelefonica.addContato(pessoa6);
+        listaTelefonica.addContato(pessoa7);
+        listaTelefonica.addContato(pessoa8);
     }
 
-    /*
-    @Description Testa a busca de contatos informando apenas 1 letra
-    exibe os contatos encontrados
-     */
     @Test
-    public void buscaLetra(){
+    public void testBuscarLetra(){
         ListaTelefonica listaTelefonica = new ListaTelefonica();
         initializePhoneBook(listaTelefonica);
 
-
         List consulta = listaTelefonica.search("G");
+
         List resultado = new LinkedList();
-        resultado.add(new Pessoa("Gabriel", "222222"));
-        resultado.add(new Pessoa("Guilherme", "555555"));
+        resultado.add(pessoa2);
+        resultado.add(pessoa5);
 
         assertEquals(resultado, consulta);
     }
 
-    /*
-   @Description Testa a busca de contatos informando nome parcial/completo
-   exibe os contatos encontrados
-    */
     @Test
-    public void buscaNome(){
+    public void testBuscaNome(){
         ListaTelefonica listaTelefonica = new ListaTelefonica();
         initializePhoneBook(listaTelefonica);
 
-        System.out.println("Informe a(s) inicial(is) do nome da pessoa que deseja encontrar o contato: ");
+        List consulta = listaTelefonica.search("Rafael");
 
-        List consulta = null;
-        try {
-            consulta = listaTelefonica.search("Rafael");
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+        List resultado = new LinkedList();
+        resultado.add(pessoa1);
+        resultado.add(pessoa8);
 
-        if (!consulta.isEmpty()){
-            System.out.println("\nEncontrei estes contatos ...");
-
-            for (Iterator i = consulta.iterator(); i.hasNext(); ){
-                Pessoa pessoa = (Pessoa)i.next();
-
-                System.out.println("Nome: " + pessoa.getNome() + " - Telefone: " + pessoa.getTelefone());
-            }
-        }else{
-            System.out.println("Desculpe, não consegui encontar nenhum contato");
-        }
+        assertEquals(resultado, consulta);
     }
 
-    /*
-   @Description Testa a busca de contatos com informações que não ha na lista
-   deve retornar que não encontrou
-    */
     @Test
-    public void buscaInesistente(){
+    public void testForaDaAgenda(){
         ListaTelefonica listaTelefonica = new ListaTelefonica();
         initializePhoneBook(listaTelefonica);
 
-        System.out.println("Informe a(s) inicial(is) do nome da pessoa que deseja encontrar o contato: ");
+        List consulta = listaTelefonica.search("Z");
 
-        List consulta = null;
-        try {
-            consulta = listaTelefonica.search("Z");
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-
-        if (!consulta.isEmpty()){
-            System.out.println("\nEncontrei estes contatos ...");
-
-            for (Iterator i = consulta.iterator(); i.hasNext(); ){
-                Pessoa pessoa = (Pessoa)i.next();
-
-                System.out.println("Nome: " + pessoa.getNome() + " - Telefone: " + pessoa.getTelefone());
-            }
-        }else{
-            System.out.println("Desculpe, não consegui encontar nenhum contato!!");
-        }
+        assertThat(consulta.isEmpty(), is(true));
     }
 
-    /*
-    Testa passar o parametro de busca como nulo
-     */
     @Test
-    public void buscaNull(){
+    public void testNulo(){
         ListaTelefonica listaTelefonica = new ListaTelefonica();
         initializePhoneBook(listaTelefonica);
 
-        System.out.println("Informe a(s) inicial(is) do nome da pessoa que deseja encontrar o contato: ");
-        String x = null;
+        boolean excpetion = false;
 
-        List consulta = null;
-        try {
-            consulta = listaTelefonica.search(x);
-            if (!consulta.isEmpty()){
-                System.out.println("\nEncontrei estes contatos ....");
-
-                for (Iterator i = consulta.iterator(); i.hasNext(); ){
-                    Pessoa pessoa = (Pessoa)i.next();
-
-                    System.out.println("Nome: " + pessoa.getNome() + " - Telefone: " + pessoa.getTelefone());
-                }
-            }else{
-                System.out.println("Desculpe, não consegui encontar nenhum contato!");
-            }
-        } catch (NullPointerException e) {
-            System.out.println(e);
+        try{
+            listaTelefonica.search(null);
+        }catch (NullPointerException e){
+            excpetion = true;
         }
 
-
+        assertTrue(excpetion);
     }
 }
