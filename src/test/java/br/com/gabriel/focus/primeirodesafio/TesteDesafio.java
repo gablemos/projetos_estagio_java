@@ -21,7 +21,7 @@ public class TesteDesafio{
     static Contato contato7 = new Contato("Remo", "777777");
     static Contato contato8 = new Contato("Rafael", "888888");
 
-    public static void initializePhoneBook(ListaTelefonica listaTelefonica){
+    public static void inicializarListaTelefonica(ListaTelefonica listaTelefonica){
         listaTelefonica.addContato(contato1);
         listaTelefonica.addContato(contato2);
         listaTelefonica.addContato(contato3);
@@ -33,11 +33,11 @@ public class TesteDesafio{
     }
 
     @Test
-    public void testBuscarLetra(){
-        ListaTelefonica listaTelefonica = new ListaTelefonica();
-        initializePhoneBook(listaTelefonica);
+    public void testConsultarLetra() throws IllegalAccessException{
+        ListaTelefonica listaTelefonica =  new ListaTelefonica();
+        inicializarListaTelefonica(listaTelefonica);
 
-        List consulta = listaTelefonica.consultaContato("G");
+        List consulta = listaTelefonica.consultarContatos("G");
 
         List resultado = new LinkedList();
         resultado.add(contato2);
@@ -47,11 +47,11 @@ public class TesteDesafio{
     }
 
     @Test
-    public void testBuscaNome(){
-        ListaTelefonica listaTelefonica = new ListaTelefonica();
-        initializePhoneBook(listaTelefonica);
+    public void testConsultarNome() throws IllegalAccessException{
+        ListaTelefonica listaTelefonica =  new ListaTelefonica();
+        inicializarListaTelefonica(listaTelefonica);
 
-        List consulta = listaTelefonica.consultaContato("Rafael");
+        List consulta = listaTelefonica.consultarContatos("Rafael");
 
         List resultado = new LinkedList();
         resultado.add(contato1);
@@ -61,24 +61,51 @@ public class TesteDesafio{
     }
 
     @Test
-    public void testForaDaAgenda(){
-        ListaTelefonica listaTelefonica = new ListaTelefonica();
-        initializePhoneBook(listaTelefonica);
+    public void testConsultarForaDaAgenda() throws IllegalAccessException{
+        ListaTelefonica listaTelefonica =  new ListaTelefonica();
+        inicializarListaTelefonica(listaTelefonica);
 
-        List consulta = listaTelefonica.consultaContato("Z");
+        List consulta = listaTelefonica.consultarContatos("Z");
 
         assertThat(consulta.isEmpty(), is(true));
     }
 
     @Test
-    public void testNulo(){
-        ListaTelefonica listaTelefonica = new ListaTelefonica();
-        initializePhoneBook(listaTelefonica);
+    public void testConsultarNulo() throws IllegalAccessException{
+        ListaTelefonica listaTelefonica =  new ListaTelefonica();
+        inicializarListaTelefonica(listaTelefonica);
 
         boolean excpetion = false;
 
         try{
-            listaTelefonica.consultaContato(null);
+            listaTelefonica.consultarContatos(null);
+        }catch (NullPointerException e){
+            excpetion = true;
+        }
+
+        assertTrue(excpetion);
+    }
+
+    @Test
+    public void testImprimirConsulta() throws IllegalAccessException{
+        ListaTelefonica listaTelefonica =  new ListaTelefonica();
+        inicializarListaTelefonica(listaTelefonica);
+
+        List consulta = listaTelefonica.consultarContatos("G");
+
+        listaTelefonica.imprimirContatos(consulta);
+    }
+
+    @Test
+    public void testImprimirListaNula(){
+        ListaTelefonica listaTelefonica =  new ListaTelefonica();
+        inicializarListaTelefonica(listaTelefonica);
+
+        boolean excpetion = false;
+
+        try{
+            List consulta = null;
+            listaTelefonica.imprimirContatos(consulta);
         }catch (NullPointerException e){
             excpetion = true;
         }
