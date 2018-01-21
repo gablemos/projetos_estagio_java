@@ -11,16 +11,11 @@ public class Main {
 
         System.out.println("Informe a(s) inicial(is) do nome da pessoa que deseja encontrar o contato: ");
 
-
-        try {
-            listaTelefonica.imprimirContatos(listaTelefonica.consultarContatos(scanner.next()));
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        listaTelefonica.imprimirContatos(scanner.next());
 
     }
 
-    private static void inicializarListaTelefonica(ListaTelefonica listaTelefonica){
+    private static void inicializarListaTelefonica(ListaTelefonica listaTelefonica) {
         listaTelefonica.addContato(new Contato("Rafaela", "111111"));
         listaTelefonica.addContato(new Contato("Gabriel", "222222"));
         listaTelefonica.addContato(new Contato("Lucas", "333333"));
