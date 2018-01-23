@@ -2,10 +2,13 @@ package br.com.gabriel.focus.primeirodesafio;
 
 public class Contato {
 
-    private String nome, telefone;
+    private final String nome;
+    private final String telefone;
 
-    public Contato(String nome, String telefone){
-        this.nome = nome;
+    public Contato(final String nome,
+                   final String telefone){
+
+        this.nome = nome.toLowerCase();
         this.telefone = telefone;
     }
 
@@ -15,5 +18,14 @@ public class Contato {
 
     public String getTelefone() {
         return telefone;
+    }
+
+    public boolean verificarNome(final String caracter){
+        if(nome.startsWith(
+                caracter.toLowerCase())){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
