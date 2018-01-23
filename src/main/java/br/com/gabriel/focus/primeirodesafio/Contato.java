@@ -21,8 +21,11 @@ public class Contato {
     }
 
     public boolean verificarNome(final String caracter){
-        if(nome.startsWith(
-                caracter.toLowerCase())){
+        if(nome.startsWith(caracter
+                .toLowerCase()
+                .replace(" ", "")
+                .trim()
+        )){
             return true;
         } else {
             return false;
